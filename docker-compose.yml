@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: dolg_api_web
+    ports:
+      - "8000:8000"
+    environment:
+      - PROJECT_NAME=Dolg API
+      - SECRET_KEY=dolg-secret-key-change-in-production-super-safe-random-key
+      - DATABASE_URL=sqlite:///./dolg.db
+    volumes:
+      - ./dolg.db:/app/dolg.db
+    restart: always
